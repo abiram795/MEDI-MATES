@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate Admin</div>
+        <div class="nav-links">
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <a href="admin-dashboard.html" class="active">Dashboard</a>
+            <a href="#" id="nav-hospitals">Hospitals</a>
+            <a href="#" id="nav-doctors">Doctors</a>
+            <a href="#" id="nav-users">Users</a>
+        </aside>
+
+        <main class="main-content">
+            <h1>Admin Dashboard</h1>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Total Users</h3>
+                    <p id="admin-users">0</p>
+                </div>
+                <div class="card">
+                    <h3>Pending Hospitals</h3>
+                    <p id="admin-hospitals">0</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Pending Approvals</h2>
+            <div id="pending-list" class="card-grid">
+                <!-- Loaded by JS -->
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

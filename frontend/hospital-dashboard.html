@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Dashboard | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate (Hospital)</div>
+        <div class="nav-links">
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <a href="hospital-dashboard.html" class="active">Dashboard</a>
+            <a href="#">Doctors</a>
+            <a href="#">Services</a>
+            <a href="#">Profile</a>
+        </aside>
+
+        <main class="main-content">
+            <h1>Hospital Dashboard</h1>
+            <div id="approval-status" class="card" style="margin-bottom: 1rem; background: var(--warning); color: white; display: none;">
+                Your account is pending admin approval. Some features may be restricted.
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Total Doctors</h3>
+                    <p id="hosp-docs">0</p>
+                </div>
+                <div class="card">
+                    <h3>Total Services</h3>
+                    <p id="hosp-serv">0</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Manage Doctors</h2>
+            <div class="card">
+                <p>Doctor management functionality will be implemented here.</p>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

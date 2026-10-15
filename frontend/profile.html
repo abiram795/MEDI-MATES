@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate</div>
+        <div class="nav-links">
+            <a href="patient-dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <main class="main-content">
+            <h1>My Profile</h1>
+            <div class="card" style="max-width: 500px;">
+                <form id="profile-form">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" id="full_name">
+                    </div>
+                    <div class="input-group">
+                        <label>Phone</label>
+                        <input type="text" id="phone">
+                    </div>
+                    <div class="input-group">
+                        <label>Date of Birth</label>
+                        <input type="date" id="dob">
+                    </div>
+                    <div class="input-group">
+                        <label>Gender</label>
+                        <select id="gender">
+                            <option value="">Select</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="save-btn">Save Changes</button>
+                    <div id="profile-msg" style="margin-top: 1rem; color: var(--success);"></div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/api.js"></script>
+    <script type="module">
+        import { request } from './js/api.js';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const profile = await request('/patients/me');
+                document.getElementById('full_name').value = profile.full_name || '';
+                document.getElementById('phone').value = profile.phone || '';
+                document.getElementById('dob').value = profile.dob || '';
+                document.getElementById('gender').value = profile.gender || '';
+            } catch (e) {
+                console.error(e);
+            }
+        });
+
+        document.getElementById('profile-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('save-btn');
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+
+            const data = {
+                full_name: document.getElementById('full_name').value,
+                phone: document.getElementById('phone').value,
+                dob: document.getElementById('dob').value,
+                gender: document.getElementById('gender').value,
+            };
+
+            try {
+                await request('/patients/me', {
+                    method: 'PUT',
+                    body: JSON.stringify(data)
+                });
+                document.getElementById('profile-msg').textContent = 'Profile updated successfully!';
+            } catch (err) {
+                document.getElementById('profile-msg').textContent = 'Error: ' + err.message;
+                document.getElementById('profile-msg').style.color = 'var(--danger)';
+            } finally {
+                btn.textContent = 'Save Changes';
+                btn.disabled = false;
+                setTimeout(() => document.getElementById('profile-msg').textContent='', 3000);
+            }
+        });
+    </script>
+</body>
+</html>

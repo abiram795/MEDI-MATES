@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Hospitals | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .search-bar { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .search-bar input { padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px; flex: 1; min-width: 200px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="patient-dashboard.html">Dashboard</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <h1>Find Hospitals</h1>
+
+        <div class="search-bar">
+            <input type="text" id="search-name" placeholder="Search by hospital name...">
+            <button class="btn btn-primary" onclick="searchHospitals()">Search</button>
+            <button class="btn btn-secondary" onclick="findNearby()">Find Nearby (Requires Location)</button>
+        </div>
+
+        <div id="hospitals-list" class="card-grid">
+            <!-- Loaded by JS -->
+        </div>
+    </main>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/hospitals.js"></script>
+</body>
+</html>

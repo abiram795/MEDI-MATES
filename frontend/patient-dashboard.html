@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate</div>
+        <div class="nav-links">
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <a href="patient-dashboard.html" class="active">Dashboard</a>
+            <a href="report-analysis.html">Analyze Report</a>
+            <a href="documents.html">Medical Documents</a>
+            <a href="doctors.html">Find Doctors</a>
+            <a href="hospitals.html">Find Hospitals</a>
+            <a href="profile.html">Profile</a>
+        </aside>
+
+        <main class="main-content">
+            <h1 id="welcome-msg">Good Morning</h1>
+
+            <h2>Health Overview</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Reports Analyzed</h3>
+                    <p id="stats-reports">0</p>
+                </div>
+                <div class="card">
+                    <h3>Medical Documents</h3>
+                    <p id="stats-docs">0</p>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Recent Medical Activity</h2>
+            <div id="recent-activity" class="card-grid">
+                <!-- Activity populated by JS -->
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

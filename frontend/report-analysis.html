@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Analysis | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .analysis-container { max-width: 800px; margin: 0 auto; }
+        .lang-toggle { display: flex; gap: 1rem; margin-bottom: 1rem; }
+        .lang-btn { cursor: pointer; padding: 0.5rem 1rem; border: 1px solid var(--primary); border-radius: 4px; }
+        .lang-btn.active { background: var(--primary); color: white; }
+        .status-badge { padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        .status-Normal { background: var(--success); color: white; }
+        .status-High, .status-Low, .status-Abnormal { background: var(--danger); color: white; }
+        .observation-row { display: flex; justify-content: space-between; padding: 0.5rem; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate</div>
+        <div class="nav-links">
+            <a href="patient-dashboard.html">Dashboard</a>
+            <a href="documents.html">My Documents</a>
+        </div>
+    </nav>
+
+    <main class="main-content analysis-container">
+        <h1>AI Report Analysis</h1>
+
+        <div id="loading" style="display: none; text-align: center; padding: 2rem;">
+            <h2>Analyzing your report...</h2>
+            <p>Please wait, our AI is reading the medical text.</p>
+        </div>
+
+        <div id="no-doc" style="display: none;">
+            <p>No document selected. Go to <a href="documents.html">My Documents</a> to analyze a report.</p>
+        </div>
+
+        <div id="analysis-content" style="display: none;">
+            <div class="card" style="margin-bottom: 1rem;">
+                <h2>Summary</h2>
+                <p id="a-summary"></p>
+            </div>
+
+            <div class="card" style="margin-bottom: 1rem;">
+                <h2>Key Findings</h2>
+                <div id="a-observations"></div>
+            </div>
+
+            <div class="card" style="margin-bottom: 1rem;">
+                <h2>Simple Explanation</h2>
+                <div class="lang-toggle">
+                    <div class="lang-btn active" onclick="setLang('en')">English</div>
+                    <div class="lang-btn" onclick="setLang('ta')">தமிழ்</div>
+                </div>
+                <p id="a-explanation-en"></p>
+                <p id="a-explanation-ta" style="display: none;"></p>
+            </div>
+
+            <div class="card" style="margin-bottom: 1rem;">
+                <h2>Questions You Can Ask Your Doctor</h2>
+                <ul id="a-questions" style="margin-left: 1.5rem;"></ul>
+            </div>
+
+            <div class="card">
+                <h2>Recommended Follow-up</h2>
+                <ul id="a-followup" style="margin-left: 1.5rem;"></ul>
+            </div>
+
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted); text-align: center;">
+                <em>Disclaimer: This AI analysis is for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician.</em>
+            </p>
+        </div>
+    </main>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Documents | MediMate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MediMate</div>
+        <div class="nav-links">
+            <a href="patient-dashboard.html">Dashboard</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <main class="main-content">
+            <h1>Medical Documents</h1>
+
+            <div class="card" style="margin-bottom: 2rem;">
+                <h3>Upload New Document</h3>
+                <form id="upload-form" style="display: flex; gap: 1rem; align-items: center; margin-top: 1rem;">
+                    <input type="file" id="file-input" required accept=".pdf,.jpg,.jpeg,.png">
+                    <button type="submit" class="btn btn-primary" id="upload-btn">Upload</button>
+                </form>
+                <div id="upload-error" class="error"></div>
+            </div>
+
+            <h2>My Documents</h2>
+            <div id="documents-list" class="card-grid">
+                <!-- Documents loaded here -->
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/documents.js"></script>
+</body>
+</html>
